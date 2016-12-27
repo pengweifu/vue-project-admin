@@ -1,53 +1,62 @@
 import lazyLoading from './lazyLoading'
 
 export default {
-  name: 'System',
+  name: 'Workfolw',
   meta: {
-    icon: 'fa-bar-chart-o',
+    icon: 'fa-building-o',
     expanded: false,
-    label: '系统管理'
+    label: '工作流管理'
   },
 
   children: [
     {
-      name: 'Dept',
+      name: 'ProcessDefine',
       meta: {
-        label: '部门管理'
+        label: '审批流程'
       },
-      path: '/system/dept',
-      component: lazyLoading('system/Dept')
+      path: '/workflow/processDefine',
+      component: lazyLoading('workflow/ProcessDefine')
     },
     {
-      name: 'Role',
+      name: 'Template',
       meta: {
-        label: '角色管理'
+        label: '表单模板'
       },
-      path: '/system/role',
-      component: lazyLoading('system/role')
+      path: '/workflow/template',
+      component: lazyLoading('workflow/Template')
     },
     {
-      name: 'Buttonqx',
+      name: 'TemplateAdd',
       meta: {
-        label: '按钮权限管理'
+        label: '表单模板/新增',
+        show: false
       },
-      path: '/system/buttonqx',
-      component: lazyLoading('system/buttonqx')
+      path: '/workflow/template/add',
+      component: lazyLoading('workflow/Template/Add')
     },
     {
-      name: 'Menu',
+      name: 'FlowApply',
       meta: {
-        label: '菜单管理'
+        label: '起草申请'
       },
-      path: '/system/menu',
-      component: lazyLoading('system/menu')
+      path: '/workflow/flowApply',
+      component: lazyLoading('workflow/FlowApply')
     },
     {
-      name: 'Button',
+      name: 'MyTaskFlow',
       meta: {
-        label: '按钮管理'
+        label: '待我审批'
       },
-      path: '/system/button',
-      component: lazyLoading('system/button')
+      path: '/workflow/myTaskFlow',
+      component: lazyLoading('workflow/MyTaskFlow')
+    },
+    {
+      name: 'MyApplication',
+      meta: {
+        label: '我的申请'
+      },
+      path: '/workflow/myApplication',
+      component: lazyLoading('workflow/MyApplication')
     }
   ]
 }

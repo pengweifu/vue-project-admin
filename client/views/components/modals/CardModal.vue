@@ -1,7 +1,6 @@
 <template>
   <card-modal :visible="visible" @close="close" :title="title" transition="zoom">
-    <div class="content has-text-centered"><img :src="src" height="120" alt="Vue Admin"></div>
-    <a @click="open(url)">Vue Admin on GitHub</a>
+    <div class="content has-text-centered">{{content}}</div>
   </card-modal>
 </template>
 
@@ -16,20 +15,10 @@ export default {
   props: {
     visible: Boolean,
     title: String,
-    url: String
-  },
-
-  data () {
-    return {
-      src: require('assets/logo.svg')
-    }
+    content: String
   },
 
   methods: {
-    open (url) {
-      window.open(url)
-    },
-
     close () {
       this.$emit('close')
     }

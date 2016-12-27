@@ -5,6 +5,7 @@ import * as types from '../../mutation-types'
 // import components from './components'
 // import tables from './tables'
 import system from './system'
+import activiti from './activiti'
 
 // show: meta.label -> name
 // name: component name
@@ -24,7 +25,8 @@ const state = {
     // uifeatures,
     // components,
     // tables
-    system
+    system,
+    activiti
   ]
 }
 
