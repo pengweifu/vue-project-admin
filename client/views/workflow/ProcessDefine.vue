@@ -76,21 +76,26 @@
         </article>
       </div>
     </div>
-    <modal
-      title="删除流程"
-      ok-text="确定"
-      cancel-text="取消"
-      small
-      :show.sync="isShowModal"
-      :callback="deleteProcess()">
-      <div slot="modal-body" class="modal-body"></div>
-    </modal>
+    <card-modal :visible="isShowModal"
+                :title="'删除流程'"
+                transition="zoom"
+                v-on:ok="deleteProcess"
+                v-on:cancel="openModalCard">
+      <div class="content has-text-centered">确定要删除这个流程吗?</div>
+    </card-modal>
+    <!--<card-modal :visible="isShowImg"-->
+                <!--:title="'流程图'"-->
+                <!--transition="zoom"-->
+                <!--v-on:ok="viewProcessShow"-->
+                <!--v-on:cancel="viewProcessShow">-->
+      <!--<img :src="" alt="流程图">-->
+    <!--</card-modal>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   //  import VueFileUpload from 'vue-file-upload'
-  import { modal } from 'vue-strap'
+  import { CardModal } from 'vue-bulma-modal'
 
   export default {
 //    data(){
@@ -152,7 +157,7 @@
 //      VueFileUpload
 //    }
     components: {
-      modal
+      CardModal
     },
     mounted () {
       this.getListAll()
@@ -161,7 +166,9 @@
       return {
         processDefinitions: [],
         isShowModal: false,
-        currentKey: ''
+        isShowImg: false,
+        currentKey: '',
+        currentId: ''
       }
     },
     methods: {
@@ -174,12 +181,28 @@
       deploy () {
         this.$http.put('/api/workflow/deploy').then((resp) => {
           console.log(resp)
+          this.getListAll()
         })
       },
+      openModalCard (key) {
+        if (key) {
+          this.currentKey = key
+        }
+        this.isShowModal = !this.isShowModal
+      },
       deleteProcess () {
+        console.log(111)
         this.$http.delete('/api/workflow/deleteDeploymentByPDKey/' + this.currentKey).then((resp) => {
+          this.isShowModal = false
+          this.getListAll()
           console.log(resp)
         })
+      },
+      viewProcessShow (id) {
+        if (id) {
+          this.currentId = id
+        }
+        this.isShowImg = !this.isShowImg
       }
     }
   }

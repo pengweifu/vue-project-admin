@@ -43,6 +43,15 @@ export default {
       component: lazyLoading('workflow/FlowApply')
     },
     {
+      name: 'FlowApplyAdd',
+      meta: {
+        label: '提交申请',
+        show: false
+      },
+      path: '/workflow/flowApply/add',
+      component: lazyLoading('workflow/FlowApply/Add')
+    },
+    {
       name: 'MyTaskFlow',
       meta: {
         label: '待我审批'
@@ -57,6 +66,33 @@ export default {
       },
       path: '/workflow/myApplication',
       component: lazyLoading('workflow/MyApplication')
+    },
+    {
+      name: 'ApplicationInfo',
+      meta: {
+        label: '申请信息',
+        show: false
+      },
+      path: '/workflow/applicationInfo',
+      component: lazyLoading('workflow/ApplicationInfo')
+    },
+    {
+      name: 'ApplicationRecord',
+      meta: {
+        label: '审批流转记录',
+        show: false
+      },
+      path: '/workflow/applicationRecord',
+      component: lazyLoading('workflow/ApplicationRecord')
+    },
+    {
+      name: 'ApplicationDeal',
+      meta: {
+        label: '审批流转记录',
+        show: false
+      },
+      path: '/workflow/applicationDeal',
+      component: lazyLoading('workflow/ApplicationDeal')
     }
   ]
 }

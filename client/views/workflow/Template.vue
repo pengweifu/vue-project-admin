@@ -21,7 +21,7 @@
                   {{item.vcPdkey}}
                 </td>
                 <td class="is-icon">
-                  <a href="#">
+                  <a href="javascript:;" @click="isShowDeleteModal(item.vcId)">
                     <i class="fa fa-github"></i>
                   </a>
                 </td>
@@ -50,15 +50,28 @@
         </article>
       </div>
     </div>
+    <card-modal :visible="isShowModal"
+                :title="'删除模板'"
+                transition="zoom"
+                v-on:ok="deleteTemplate"
+                v-on:cancel="isShowDeleteModal">
+      <div class="content has-text-centered">确定要删除这个模板吗?</div>
+    </card-modal>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import { CardModal } from 'vue-bulma-modal'
   export default {
+    components: {
+      CardModal
+    },
     props: [],
     data () {
       return {
-        templates: []
+        templates: [],
+        currentTemplateId: '',
+        isShowModal: false
       }
     },
     mounted () {
@@ -68,6 +81,19 @@
       findAllTemplate () {
         this.$http.get('/api/workflow/findAllTemplate').then((resp) => {
           this.templates = resp.data
+        })
+      },
+      isShowDeleteModal (templateId) {
+        if (templateId) {
+          this.currentTemplateId = templateId
+        }
+        this.isShowModal = !this.isShowModal
+      },
+      deleteTemplate () {
+        this.$http.delete('/api/workflow/deleteTemplate/' + this.currentTemplateId).then((resp) => {
+          this.isShowModal = false
+          this.findAllTemplate()
+          console.log(resp)
         })
       }
     }

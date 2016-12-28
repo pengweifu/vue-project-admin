@@ -23,15 +23,15 @@ export default {
         label: '角色管理'
       },
       path: '/system/role',
-      component: lazyLoading('system/role')
+      component: lazyLoading('system/Role')
     },
     {
-      name: 'Buttonqx',
+      name: 'QxButton',
       meta: {
         label: '按钮权限管理'
       },
-      path: '/system/buttonqx',
-      component: lazyLoading('system/buttonqx')
+      path: '/system/qxbutton',
+      component: lazyLoading('system/QxButton')
     },
     {
       name: 'Menu',
@@ -39,7 +39,7 @@ export default {
         label: '菜单管理'
       },
       path: '/system/menu',
-      component: lazyLoading('system/menu')
+      component: lazyLoading('system/Menu')
     },
     {
       name: 'Button',
@@ -47,7 +47,7 @@ export default {
         label: '按钮管理'
       },
       path: '/system/button',
-      component: lazyLoading('system/button')
+      component: lazyLoading('system/Button')
     }
   ]
 }
