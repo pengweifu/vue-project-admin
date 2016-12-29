@@ -34,7 +34,10 @@
               </tbody>
             </table>
           </div>
-          <button @click="deploy">定义流程文件</button>
+          <div>
+            <upload :name="'file'" :action="'/api/workflow/deploy'" :params="{bpmnName: '我的结婚流程'}"></upload>
+          </div>
+          <!--<button @click="deploy">定义流程文件</button>-->
           <div>
             <p>说明：</p>
             <p>1，列表显示的是所有流程定义（不同名称）的最新版本。</p>
@@ -83,81 +86,28 @@
                 v-on:cancel="openModalCard">
       <div class="content has-text-centered">确定要删除这个流程吗?</div>
     </card-modal>
-    <!--<card-modal :visible="isShowImg"-->
-                <!--:title="'流程图'"-->
-                <!--transition="zoom"-->
-                <!--v-on:ok="viewProcessShow"-->
-                <!--v-on:cancel="viewProcessShow">-->
-      <!--<img :src="" alt="流程图">-->
-    <!--</card-modal>-->
+    <card-modal :visible="isShowImg"
+                :title="'流程图'"
+                transition="zoom"
+                v-on:ok="viewProcessShow"
+                v-on:cancel="viewProcessShow">
+      <div class="content has-text-centered">
+        <img :src="'/api/workflow/getProcessDiagram/'+currentId" alt="流程图">
+      </div>
+
+    </card-modal>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   //  import VueFileUpload from 'vue-file-upload'
   import { CardModal } from 'vue-bulma-modal'
+  import upload from '../components/upload'
 
   export default {
-//    data(){
-//      return{
-//        files:[],
-//        //文件过滤器，只能上传图片
-//        filters:[
-//          {
-//            name:"imageFilter",
-//            fn(file){
-//              var type = '|' + file.type.slice(file.type.lastIndexOf('/') + 1) + '|';
-//              return '|zip|'.indexOf(type) !== -1;
-//            }
-//          }
-//        ],
-//        //回调函数绑定
-//        cbEvents:{
-//          onCompleteUpload:(file,response,status,header)=>{
-//            console.log(file);
-//            console.log("finish upload;")
-//          }
-//        },
-//        //xhr请求附带参数
-//        reqopts:{
-//          formData:{
-//            tokens:'tttttttttttttt'
-//          },
-//          responseType:'json',
-//          withCredentials:false
-//        }
-//      }
-//    },
-//    methods:{
-//      onStatus(file){
-//        if(file.isSuccess){
-//          return "上传成功";
-//        }else if(file.isError){
-//          return "上传失败";
-//        }else if(file.isUploading){
-//          return "正在上传";
-//        }else{
-//          return "待上传";
-//        }
-//      },
-//      onAddItem(files){
-//        console.log(files);
-//        this.files = files;
-//      },
-//      uploadItem(file){
-//        //单个文件上传
-//        file.upload();
-//      },
-//      uploadAll(){
-//        //上传所有文件
-//        this.$refs.vueFileUploader.uploadAll();
-//      }
-//    },
-//    components:{
-//      VueFileUpload
-//    }
     components: {
-      CardModal
+      CardModal,
+      upload
     },
     mounted () {
       this.getListAll()

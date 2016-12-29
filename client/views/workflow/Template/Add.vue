@@ -37,7 +37,14 @@
         <article class="tile is-child box">
           <h1 class="title">模板文件</h1>
           <div class="block">
-            添加上传文件
+            <div class="control is-horizontal">
+              <div class="control-label">
+                <label class="label">添加上传文件</label>
+              </div>
+              <div class="control">
+                <upload :name="'file'" :action="'/api/workflow/deployTemplate'" :params="{vcName: vcName, vcPdkey: vcPdkey}"></upload>
+              </div>
+            </div>
             <div class="control is-horizontal">
               <div class="control-label">
                 <label class="label"></label>
@@ -61,8 +68,12 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import upload from '../../components/upload'
   export default {
     props: [],
+    components: {
+      upload
+    },
     mounted () {
       this.getAllLastDeployment()
     },
