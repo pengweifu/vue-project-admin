@@ -42,7 +42,12 @@
                 <label class="label">添加上传文件</label>
               </div>
               <div class="control">
-                <upload :name="'file'" :action="'/api/workflow/deployTemplate'" :params="{vcName: vcName, vcPdkey: vcPdkey}"></upload>
+                <upload :name="'file'"
+                        :action="'/api/workflow/deployTemplate'"
+                        :params="{vcName: vcName, vcPdkey: vcPdkey}"
+                        :successCallback="successCall">
+
+                </upload>
               </div>
             </div>
             <div class="control is-horizontal">
@@ -95,6 +100,9 @@
         this.$http.post('/api/workflow/deployTemplate', {vcName: this.vcName, vcPdkey: this.vcPdkey}).then((resp) => {
           console.log(resp)
         })
+      },
+      successCall () {
+        this.$router.back()
       }
     }
   }

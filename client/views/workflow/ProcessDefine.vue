@@ -35,7 +35,8 @@
             </table>
           </div>
           <div>
-            <upload :name="'file'" :action="'/api/workflow/deploy'" :params="{bpmnName: '我的结婚流程'}"></upload>
+            <upload :name="'file'" :action="'/api/workflow/deploy'"
+                    :params="{bpmnName: '我的结婚流程'}" :successCallback="getListAll"></upload>
           </div>
           <!--<button @click="deploy">定义流程文件</button>-->
           <div>
