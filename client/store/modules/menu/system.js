@@ -18,6 +18,14 @@ export default {
       component: lazyLoading('system/Dept')
     },
     {
+      name: 'User',
+      meta: {
+        label: '部门管理'
+      },
+      path: '/system/uept',
+      component: lazyLoading('system/User')
+    },
+    {
       name: 'Role',
       meta: {
         label: '角色管理'

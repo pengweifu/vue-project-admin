@@ -73,7 +73,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import upload from '../../components/upload'
+  import upload from '../../../components/upload'
   export default {
     props: [],
     components: {

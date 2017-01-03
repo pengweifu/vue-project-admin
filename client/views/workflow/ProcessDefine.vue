@@ -103,7 +103,7 @@
 <script type="text/ecmascript-6">
   //  import VueFileUpload from 'vue-file-upload'
   import { CardModal } from 'vue-bulma-modal'
-  import upload from '../components/upload'
+  import upload from '../../components/upload'
 
   export default {
     components: {
