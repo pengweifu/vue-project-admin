@@ -20,9 +20,9 @@ export default {
     {
       name: 'User',
       meta: {
-        label: '部门管理'
+        label: '用户管理'
       },
-      path: '/system/uept',
+      path: '/system/user',
       component: lazyLoading('system/User')
     },
     {
@@ -56,6 +56,14 @@ export default {
       },
       path: '/system/button',
       component: lazyLoading('system/Button')
+    },
+    {
+      name: 'FormManager',
+      meta: {
+        label: '表单管理'
+      },
+      path: '/system/formManager',
+      component: lazyLoading('system/FormManager')
     }
   ]
 }
