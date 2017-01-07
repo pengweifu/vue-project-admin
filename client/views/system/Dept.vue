@@ -1,20 +1,27 @@
 <template>
   <div>
     <tree-view :model="nodes">
+
     </tree-view>
+
+      </div>
+    </card-modal>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import treeView from '../../components/tree.vue'
+  import { CardModal } from 'vue-bulma-modal'
   export default {
     data () {
       return {
-        nodes: []
+        nodes: [],
+        isShowModal: false
       }
     },
     components: {
-      treeView
+      treeView,
+      CardModal
     },
     mounted () {
       this.getOrgTreeData()

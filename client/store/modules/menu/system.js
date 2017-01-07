@@ -60,7 +60,7 @@ export default {
     {
       name: 'FormManager',
       meta: {
-        label: '表单管理'
+        label: '表单构造器'
       },
       path: '/system/formManager',
       component: lazyLoading('system/FormManager')
