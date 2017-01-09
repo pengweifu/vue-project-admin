@@ -7,9 +7,14 @@ import router from './router'
 import store from './store'
 import * as filters from './filters'
 import { TOGGLE_SIDEBAR } from 'vuex-store/mutation-types'
+import VueDragula from 'vue-dragula'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
 
 Vue.use(Resource)
 Vue.use(NProgress)
+Vue.use(VueDragula)
+Vue.use(ElementUI)
 
 // Enable devtools
 Vue.config.devtools = true

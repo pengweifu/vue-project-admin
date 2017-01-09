@@ -39,44 +39,12 @@
                     :params="{bpmnName: '我的结婚流程'}" :successCallback="getListAll"></upload>
           </div>
           <!--<button @click="deploy">定义流程文件</button>-->
+          <router-link :to="{ name: 'DrawWorkFlow'}" tag="button" class="button is-primary">绘制流程图</router-link>
           <div>
             <p>说明：</p>
             <p>1，列表显示的是所有流程定义（不同名称）的最新版本。</p>
             <p>2，删除流程定义时，此名称的所有版本的流程定义都会被删除。</p>
           </div>
-          <!--<vue-file-upload-->
-          <!--:url="/vue-file-upload/demo/upload.php"-->
-          <!--:onAdd="onAddItem"-->
-          <!--:filters="filters"-->
-          <!--:request-options="reqopts">-->
-          <!--</vue-file-upload>-->
-          <!--<table>-->
-          <!--<thead>-->
-          <!--<tr>-->
-          <!--<th>name</th>-->
-          <!--<th>size</th>-->
-          <!--<th>preview</th>-->
-          <!--<th>progress</th>-->
-          <!--<th>status</th>-->
-          <!--<th>action</th>-->
-          <!--</tr>-->
-          <!--</thead>-->
-          <!--<tbody>-->
-          <!--<tr v-for='file in files'>-->
-          <!--<td v-text='file.name'></td>-->
-          <!--<td v-text='file.size'></td>-->
-          <!--<td>-->
-          <!--<img :src="onPreview(file)" alt="">-->
-          <!--</td>-->
-          <!--<td v-text='file.progress'></td>-->
-          <!--<td v-text='onStatus(file)'></td>-->
-          <!--<td>-->
-          <!--<button type="button" value="upload" @click="uploadItem(file)">upload</button>-->
-          <!--<button type="button" @click="uploadAll(file)">上传所有文件</button>-->
-          <!--</td>-->
-          <!--</tr>-->
-          <!--</tbody>-->
-          <!--</table>-->
         </article>
       </div>
     </div>

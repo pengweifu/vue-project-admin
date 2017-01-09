@@ -3,7 +3,7 @@
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <h1 class="title">模板基本信息</h1>
+          <h5 class="title is-5">模板基本信息</h5>
           <div class="block">
             <div class="control is-horizontal">
               <div class="control-label">
@@ -35,19 +35,35 @@
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <h1 class="title">模板文件</h1>
+          <h5 class="title is-5">模板文件</h5>
           <div class="block">
             <div class="control is-horizontal">
               <div class="control-label">
                 <label class="label">添加上传文件</label>
               </div>
               <div class="control">
-                <upload :name="'file'"
-                        :action="'/api/workflow/deployTemplate'"
-                        :params="{vcName: vcName, vcPdkey: vcPdkey}"
-                        :successCallback="successCall">
+                <el-upload
+                  :name="file"
+                  action="//jsonplaceholder.typicode.com/posts/"
+                  type="drag"
+                  :multiple="true"
+                  :data="{vcName: vcName, vcPdkey: vcPdkey}"
+                  :on-preview="handlePreview"
+                  :on-remove="handleRemove"
+                  :on-success="successCall"
+                  :on-error="handleError"
+                  :default-file-list="fileList"
+                >
+                  <i class="el-icon-upload"></i>
+                  <div class="el-dragger__text">将文件拖到此处，或<em>点击上传</em></div>
+                  <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+                </el-upload>
+                <!--<upload :name="'file'"-->
+                <!--:action="'/api/workflow/deployTemplate'"-->
+                <!--:params="{vcName: vcName, vcPdkey: vcPdkey}"-->
+                <!--:successCallback="successCall">-->
 
-                </upload>
+                <!--</upload>-->
               </div>
             </div>
             <div class="control is-horizontal">
@@ -61,7 +77,7 @@
             </div>
           </div>
           <div>
-            <p>说明</p>：
+            <p>说明：</p>
             <p>1，模板文件是doc扩展名的文件（Word文档）。</p>
             <p>2，如果是添加：必须要选择模板文件。</p>
             <p>3，如果是修改：只是在 需要更新模板文件时 才选择一个文件。</p>
@@ -73,11 +89,17 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import upload from '../../../components/upload'
+  //  import upload from '../../../components/upload'
+  import {Button, Upload, Message} from 'element-ui'
+  import 'element-ui/lib/theme-default/index.css'
+  // import 'element-ui/lib/theme-default/upload.css'
   export default {
     props: [],
     components: {
-      upload
+//      upload,
+      Message,
+      'el-button': Button,
+      'el-upload': Upload
     },
     mounted () {
       this.getAllLastDeployment()
@@ -102,7 +124,17 @@
         })
       },
       successCall () {
-        this.$router.back()
+//        this.$router.back()
+        Message({
+          message: '恭喜你，上传成功',
+          type: 'success'
+        })
+      },
+      handleRemove (file, fileList) {
+        console.log(file, fileList)
+      },
+      handlePreview (file) {
+        console.log(file)
       }
     }
   }

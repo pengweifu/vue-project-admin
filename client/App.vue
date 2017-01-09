@@ -1,4 +1,4 @@
-<template>
+/build<template>
   <div id="app">
     <nprogress-container></nprogress-container>
     <navbar :show="true"></navbar>
@@ -53,13 +53,14 @@ export default {
 </script>
 
 <style lang="scss">
+$turquoise:    hsl(205, 100%, 56%);
+$family-sans-serif: "微软雅黑";
 @import '~animate.css';
 .animated {
   animation-duration: .377s;
 }
 
 @import '~bulma';
-
 /*@import '~wysiwyg.css/wysiwyg.sass';*/
 
 $fa-font-path: '~font-awesome/fonts/';

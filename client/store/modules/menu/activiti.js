@@ -93,6 +93,15 @@ export default {
       },
       path: '/workflow/applicationDeal',
       component: lazyLoading('workflow/ApplicationDeal')
+    },
+    {
+      name: 'DrawWorkFlow',
+      meta: {
+        label: '绘制审批流程',
+        show: false
+      },
+      path: '/workflow/processDefine/drawWorkFlow',
+      component: lazyLoading('workflow/ProcessDefine/DrawWorkFlow')
     }
   ]
 }

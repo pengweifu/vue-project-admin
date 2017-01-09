@@ -4,7 +4,7 @@
       <div class="tile is-parent">
         <article class="tile is-child box">
           <div class="table-responsive">
-            <table class="table is-bordered is-striped is-narrow">
+            <table class="table is-striped">
               <thead>
               <tr>
                 <th>模板名称</th>
