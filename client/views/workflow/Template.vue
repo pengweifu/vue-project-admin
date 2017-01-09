@@ -21,7 +21,7 @@
                   {{item.vcPdkey}}
                 </td>
                 <td class="is-icon">
-                  <a href="javascript:;" @click="isShowDeleteModal(item.vcId)">
+                  <a href="javascript:;" @click="DeleteModal(item.vcId)">
                     <i class="fa fa-github"></i>
                   </a>
                 </td>
@@ -39,9 +39,11 @@
               </tbody>
             </table>
           </div>
-          <router-link :to="{ name: 'TemplateAdd'}" tag="button" class="button is-primary">
-            添加
-          </router-link>
+          <div class="box">
+            <router-link :to="{ name: 'TemplateAdd'}" tag="button" class="button is-primary">
+              添加
+            </router-link>
+          </div>
           <div>
             <p>说明：</p>
             <p>1，删除时，相应的文件也被删除。</p>
@@ -50,21 +52,12 @@
         </article>
       </div>
     </div>
-    <card-modal :visible="isShowModal"
-                :title="'删除模板'"
-                transition="zoom"
-                v-on:ok="deleteTemplate"
-                v-on:cancel="isShowDeleteModal">
-      <div class="content has-text-centered">确定要删除这个模板吗?</div>
-    </card-modal>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import { CardModal } from 'vue-bulma-modal'
   export default {
     components: {
-      CardModal
     },
     props: [],
     data () {
@@ -83,21 +76,38 @@
           this.templates = resp.data
         })
       },
-      isShowDeleteModal (templateId) {
-        if (templateId) {
-          this.currentTemplateId = templateId
-        }
-        this.isShowModal = !this.isShowModal
-      },
+//      isShowDeleteModal (templateId) {
+//        if (templateId) {
+//          this.currentTemplateId = templateId
+//        }
+//        this.isShowModal = !this.isShowModal
+//      },
       deleteTemplate () {
-        this.$http.delete('/api/workflow/deleteTemplate/' + this.currentTemplateId).then((resp) => {
-          this.isShowModal = false
-          this.findAllTemplate()
-          console.log(resp)
+        return this.$http.delete('/api/workflow/deleteTemplate/' + this.currentTemplateId)
+      },
+      DeleteModal (templateId) {
+        this.currentTemplateId = templateId
+        this.$confirm('此操作将永久删除该模板, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.deleteTemplate().then(() => {
+            this.$message({
+              type: 'success',
+              message: '删除成功!'
+            })
+          }, () => {
+            this.$message.error('错了哦，这是一条错误消息')
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
         })
       }
     }
-
   }
 </script>
 

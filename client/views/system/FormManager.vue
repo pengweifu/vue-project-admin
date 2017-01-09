@@ -79,7 +79,8 @@
       required: true, message: '域名不能为空', trigger: 'blur'
     }"
             >
-              <el-input v-model="domain.value"></el-input><el-button @click.prevent="removeDomain(domain)">删除</el-button>
+              <el-input v-model="domain.value"></el-input>
+              <el-button @click.prevent="removeDomain(domain)">删除</el-button>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
@@ -95,8 +96,7 @@
 
 <script type="text/ecmascript-6">
   export default {
-    components: {
-    },
+    components: {},
     data () {
       return {
         radio: '',
@@ -126,21 +126,21 @@
           shortcuts: [{
             text: '今天',
             onClick(picker) {
-              picker.$emit('pick', new Date());
+              picker.$emit('pick', new Date())
             }
           }, {
             text: '昨天',
             onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24);
-              picker.$emit('pick', date);
+              const date = new Date()
+              date.setTime(date.getTime() - 3600 * 1000 * 24)
+              picker.$emit('pick', date)
             }
           }, {
             text: '一周前',
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', date);
+            onClick (picker) {
+              const date = new Date()
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
+              picker.$emit('pick', date)
             }
           }]
         },
@@ -154,30 +154,30 @@
       }
     },
     methods: {
-      submitForm(formName) {
+      submitForm (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            console('submit!')
           } else {
-            console.log('error submit!!');
-            return false;
+            console.log('error submit!!')
+            return false
           }
-        });
+        })
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
+      resetForm (formName) {
+        this.$refs[formName].resetFields()
       },
-      removeDomain(item) {
+      removeDomain (item) {
         var index = this.dynamicValidateForm.domains.indexOf(item)
         if (index !== -1) {
           this.dynamicValidateForm.domains.splice(index, 1)
         }
       },
-      addDomain() {
+      addDomain () {
         this.dynamicValidateForm.domains.push({
           value: '',
           key: Date.now()
-        });
+        })
       }
     }
   }
@@ -186,26 +186,34 @@
 <style lang="scss" scoped>
   .el-row {
     margin-bottom: 20px;
-  &:last-child {
-     margin-bottom: 0;
-   }
+
+  &
+  :last-child {
+    margin-bottom: 0;
+  }
+
   }
   .el-col {
     border-radius: 4px;
   }
+
   .bg-purple-dark {
     background: #99a9bf;
   }
+
   .bg-purple {
     background: #d3dce6;
   }
+
   .bg-purple-light {
     background: #e5e9f2;
   }
+
   .grid-content {
     border-radius: 4px;
     min-height: 36px;
   }
+
   .row-bg {
     padding: 10px 0;
     background-color: #f9fafc;

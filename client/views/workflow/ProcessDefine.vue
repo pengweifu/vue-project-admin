@@ -4,7 +4,7 @@
       <div class="tile is-parent">
         <article class="tile is-child box">
           <div class="table-responsive">
-            <table class="table is-bordered is-striped is-narrow">
+            <table class="table is-striped">
               <thead>
               <tr>
                 <th>流程名称</th>
@@ -34,12 +34,14 @@
               </tbody>
             </table>
           </div>
-          <div>
+          <div class="box">
             <upload :name="'file'" :action="'/api/workflow/deploy'"
                     :params="{bpmnName: '我的结婚流程'}" :successCallback="getListAll"></upload>
           </div>
           <!--<button @click="deploy">定义流程文件</button>-->
-          <router-link :to="{ name: 'DrawWorkFlow'}" tag="button" class="button is-primary">绘制流程图</router-link>
+          <div class="box">
+            <router-link :to="{ name: 'DrawWorkFlow'}" tag="button" class="button is-success is-outlined">绘制流程图 <i class="fa fa-align-center"></i></router-link>
+          </div>
           <div>
             <p>说明：</p>
             <p>1，列表显示的是所有流程定义（不同名称）的最新版本。</p>

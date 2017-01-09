@@ -51,9 +51,30 @@
               class: 'el-tree-node__label'
             }
           }, node.label),
-          h('button', {
-            class: 'button is-success'
-          }, 'aaa')
+          h('el-button', {
+            class: 'treebutton',
+            attrs: {
+              type: 'danger',
+              icon: 'delete',
+              size: 'mini'
+            }
+          }, '删除'),
+          h('el-button', {
+            class: 'treebutton',
+            attrs: {
+              type: 'info',
+              icon: 'edit',
+              size: 'mini'
+            }
+          }, '修改'),
+          h('el-button', {
+            class: 'treebutton',
+            attrs: {
+              type: 'primary',
+              icon: 'plus',
+              size: 'mini'
+            }
+          }, '新增')
         ])
       }
     },
@@ -64,5 +85,10 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style>
+  .treebutton{
+    float:right;
+    margin-right: 10px;
+    margin-top: 8px;
+  }
 </style>
