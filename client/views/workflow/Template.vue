@@ -21,8 +21,8 @@
                   {{item.vcPdkey}}
                 </td>
                 <td class="is-icon">
-                  <a href="javascript:;" @click="DeleteModal(item.vcId)">
-                    <i class="fa fa-github"></i>
+                  <a href="javascript:;" @click="DeleteModal(item.vcId)" class="red">
+                    <i class="fa fa-trash"></i>
                   </a>
                 </td>
                 <td class="is-icon">
@@ -62,7 +62,20 @@
     props: [],
     data () {
       return {
-        templates: [],
+        templates: [
+          {
+            vcName: '2',
+            vcPdkey: '1'
+          },
+          {
+            vcName: '2',
+            vcPdkey: '1'
+          },
+          {
+            vcName: '22',
+            vcPdkey: '1'
+          }
+        ],
         currentTemplateId: '',
         isShowModal: false
       }
@@ -112,5 +125,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+  .red{
+    color: red;
+  }
 </style>

@@ -10,7 +10,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import treeView from '../../components/tree.vue'
+  import treeView from '../../components/treeInput.vue'
   import { CardModal } from 'vue-bulma-modal'
   export default {
     data () {

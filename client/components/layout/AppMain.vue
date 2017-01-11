@@ -30,7 +30,9 @@ export default {
 .app-main {
   padding-top: 50px;
   margin-left: 180px;
-  transform: translate3d(0, 0, 0);
+/*启动硬件加速会导致 fix absolute 属性元素丢失 谷歌浏览器bug*/
+  /*transform: translate3d(0, 0, 0);*/
+
 
   @include mobile() {
     margin-left: 0;

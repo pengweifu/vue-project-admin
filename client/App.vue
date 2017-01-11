@@ -82,11 +82,17 @@ $fa-font-path: '~font-awesome/fonts/';
     .peg {
       box-shadow: 0 0 10px $color, 0 0 5px $color;
     }
-
     .spinner-icon {
       border-top-color: $color;
       border-left-color: $color;
     }
   }
+}
+/*公关样式*/
+.red{
+  color: red!important;
+}
+.inputw200{
+  width: 300px!important;
 }
 </style>
