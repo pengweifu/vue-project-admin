@@ -152,7 +152,7 @@
           fileList: [],
           datesingle: '',
           silder: 0,
-          tableData: [],
+          tableData: []
         },
         rules: {
           name: [

@@ -39,6 +39,7 @@
     "date-fns": "^1.21.1",
     "element-ui": "^1.1.2",
     "font-awesome": "4.7.0",
+    "lodash": "^4.17.4",
     "mdi": "1.7.22",
     "plotly.js": "1.21.2",
     "vue": "2.1.6",
