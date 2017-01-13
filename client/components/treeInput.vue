@@ -6,7 +6,7 @@
                 :disabled="true" icon="search">
       </el-input>
     </div>
-    <el-dialog title="从树里面选择信息" v-model="dialogShow" size="tiny">
+    <el-dialog :title="title" v-model="dialogShow" size="tiny">
       <span>
         <el-tree
           :data="treeNodes"
@@ -50,6 +50,10 @@
             children: 'children'
           }
         }
+      },
+      title: {
+        Type: String,
+        default: '树选择器'
       }
     },
     data () {

@@ -2,9 +2,9 @@
   <tr v-show="show">
     <td v-for="(column,tdIndex) in columns" key="tdIndex" :width="column.width">
       <span v-if="spaceIconShow(tdIndex)" v-for="space in record._level" class="ms-tree-space"></span>
-      <button v-if="toggleIconShow(tdIndex,record)" @click="toggle">
-        <span v-if="!record._expanded">+</span>
-        <span v-if="record._expanded">-</span>
+      <button class="button is-outlined is-primary is-small" v-if="toggleIconShow(tdIndex,record)" @click="toggle">
+        <i v-if="!record._expanded" class="fa fa-plus" aria-hidden="true"></i>
+        <i v-if="record._expanded" class="fa fa-minus" aria-hidden="true"></i>
       </button>
       {{record[column.dataIndex]}}
     </td>
@@ -87,4 +87,7 @@
     width: 14px;
     height: 14px;}
   .ms-tree-space::before{content: ""}
+  table td{
+    line-height: 26px;
+  }
 </style>

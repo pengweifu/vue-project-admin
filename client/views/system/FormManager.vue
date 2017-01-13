@@ -1,59 +1,72 @@
 <template>
   <div class="box">
-    <el-row>
-      <template>
-        <el-table
-          :data="tableData"
-          stripe
-          style="width: 100%">
-          <el-table-column
-            prop="date"
-            label="序号">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="属性名">
-          </el-table-column>
-          <el-table-column
-            prop="address"
-            label="类型">
-          </el-table-column>
-          <el-table-column
-            prop="langth"
-            label="长度">
-          </el-table-column>
-          <el-table-column
-            prop="point"
-            label="小数点">
-          </el-table-column>
-          <el-table-column
-            prop="remark"
-            label="备注">
-          </el-table-column>
-          <el-table-column
-            prop="qiantai"
-            label="前台录入">
-          </el-table-column>
-          <el-table-column
-            prop="defeat"
-            label="默认值">
-          </el-table-column>
-          <el-table-column
-            label="操作"
-            width="100">
-            <template scope="scope">
-              <el-button @click="handleClick" type="text" size="small">编辑</el-button>
-              <el-button @click="DeleteModal()" type="text" size="small" class="red">删除</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-      </template>
-    </el-row>
     <el-row :gutter="20">
-      <el-col :span="2"><div class="grid-content bg-purple"><el-button type="primary" icon="plus" @click="dialogFormVisible = true">新增</el-button></div></el-col>
-      <el-col :span="2"><div class="grid-content bg-purple"><el-button type="primary" icon="edit">修改</el-button></div></el-col>
-      <el-col :span="2"><div class="grid-content bg-purple"><el-button type="primary" icon="circle-cross">取消</el-button></div></el-col>
+      <el-col :span="2">
+        <div class="grid-content bg-purple">
+          <el-button type="primary" icon="plus" @click="dialogFormVisible = true">
+            新增
+          </el-button>
+        </div>
+      </el-col>
+      <el-col :span="2">
+        <div class="grid-content bg-purple">
+          <el-button type="primary" icon="edit">修改</el-button>
+        </div>
+      </el-col>
+      <el-col :span="2">
+        <div class="grid-content bg-purple">
+          <el-button type="primary" icon="circle-cross">取消</el-button>
+        </div>
+      </el-col>
     </el-row>
+    <el-row>
+      <el-table
+        :data="tableData"
+        stripe
+        style="width: 100%">
+        <el-table-column
+          prop="date"
+          label="序号">
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          label="属性名">
+        </el-table-column>
+        <el-table-column
+          prop="address"
+          label="类型">
+        </el-table-column>
+        <el-table-column
+          prop="langth"
+          label="长度">
+        </el-table-column>
+        <el-table-column
+          prop="point"
+          label="小数点">
+        </el-table-column>
+        <el-table-column
+          prop="remark"
+          label="备注">
+        </el-table-column>
+        <el-table-column
+          prop="qiantai"
+          label="前台录入">
+        </el-table-column>
+        <el-table-column
+          prop="defeat"
+          label="默认值">
+        </el-table-column>
+        <el-table-column
+          label="操作"
+          width="100">
+          <template scope="scope">
+            <el-button @click="handleClick" type="text" size="small">编辑</el-button>
+            <el-button @click="DeleteModal()" type="text" size="small" class="red">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-row>
+
     <!--新增表单-->
     <el-dialog title="属性配置" size="small" v-model="dialogFormVisible">
       <el-form :model="form" :rules="rules" ref="form" class="demo-form-inline">
@@ -73,7 +86,8 @@
           <el-input v-model="form.date1" placeholder="请输入备注" auto-complete="off" class="inputw200"></el-input>
         </el-form-item>
         <el-form-item label="默认值" :label-width="formLabelWidth" prop="data2">
-          <el-input v-model="form.date2" auto-complete="off" :disabled="true" placeholder="无" class="inputw200"></el-input>
+          <el-input v-model="form.date2" auto-complete="off" :disabled="true" placeholder="无"
+                    class="inputw200"></el-input>
         </el-form-item>
         <el-form-item label="字段业务关联" :label-width="formLabelWidth" prop="data3">
           <el-input v-model="form.date3" auto-complete="off" placeholder="字段业务关联" class="inputw200"></el-input>
@@ -159,29 +173,29 @@
         },
         rules: {
           name: [
-            { required: true, message: '请输入属性名', trigger: 'blur' },
-            { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+            {required: true, message: '请输入属性名', trigger: 'blur'},
+            {min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur'}
           ],
           date1: [
-            { required: true, message: '请输入', trigger: 'blur' },
-            { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+            {required: true, message: '请输入', trigger: 'blur'},
+            {min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur'}
           ],
           date2: [
-            { required: true, message: '请输入', trigger: 'blur' },
-            { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+            {required: true, message: '请输入', trigger: 'blur'},
+            {min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur'}
           ],
           date3: [
-            { required: true, message: '请输入', trigger: 'blur' },
-            { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+            {required: true, message: '请输入', trigger: 'blur'},
+            {min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur'}
           ],
           length: [
-            { type: 'number', required: true, trigger: 'change' }
+            {type: 'number', required: true, trigger: 'change'}
           ],
           radio2: [
-            { type: 'number', required: true, message: '请选择活动资源', trigger: 'change' }
+            {type: 'number', required: true, message: '请选择活动资源', trigger: 'change'}
           ],
           radio3: [
-            { required: true, message: '请填写活动形式', trigger: 'blur' }
+            {required: true, message: '请填写活动形式', trigger: 'blur'}
           ]
         },
         formLabelWidth: '180px'
@@ -233,14 +247,18 @@
 </script>
 
 <style>
-  .el-input-number__decrease,.el-input-number__increase{
-    top:3px!important;
+  .el-input-number__decrease, .el-input-number__increase {
+    top: 3px !important;
   }
+
   .el-row {
     margin-bottom: 20px;
-  &:last-child {
-     margin-bottom: 0;
-   }
+
+  &
+  :last-child {
+    margin-bottom: 0;
+  }
+
   }
   /*.el-col {*/
   /*border-radius: 4px;*/
@@ -262,10 +280,10 @@
   /*padding: 10px 0;*/
   /*background-color: #f9fafc;*/
   /*}*/
-  .myclass{
-    top:0;
+  .myclass {
+    top: 0;
     bottom: 0;
-    left:0;
+    left: 0;
     right: 0;
   }
 </style>

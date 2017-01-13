@@ -1,6 +1,13 @@
 <template>
   <div style="width:100%;">
-    <table style="width:100%;" class="table table-bordered">
+    <table style="width:100%;" class="table is-striped is-bordered">
+      <thead>
+      <tr>
+        <th v-for="(column,index) in columns">
+          {{column.text}}
+        </th>
+      </tr>
+      </thead>
       <tbody>
         <tr v-for="(record,trIndex) in dataSource"
             is="grid-tr"
@@ -37,12 +44,6 @@
         default: function () {
           return []
         }
-      },
-      flexCount: {
-        type: Number
-      },
-      restWidth: {
-        type: Number
       }
     },
     computed: {},

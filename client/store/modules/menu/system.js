@@ -34,6 +34,15 @@ export default {
       component: lazyLoading('system/Role')
     },
     {
+      name: 'RoleAdd',
+      meta: {
+        label: '角色管理/新增',
+        show: false
+      },
+      path: '/system/role/add',
+      component: lazyLoading('system/Role/Add')
+    },
+    {
       name: 'Menu',
       meta: {
         label: '菜单管理'

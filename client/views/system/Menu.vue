@@ -1,5 +1,5 @@
 <template>
-  <div style="width:1000px;">
+  <div class="box">
     <grid-panel :columns="columns" :tree-structure=true :data-source="dataSource"/>
   </div>
 </template>
@@ -13,20 +13,15 @@
         columns: [
           {
             text: '测试',
-            dataIndex: 'name',
-            width: 200,
-            flex: 1
+            dataIndex: 'name'
           },
           {
             text: '测试2',
-            dataIndex: 'age',
-            width: 200,
-            flex: 2
+            dataIndex: 'age'
           },
           {
             text: '测试3',
-            dataIndex: 'age',
-            width: 200
+            dataIndex: 'age'
           }
         ],
         dataSource: [
@@ -63,6 +58,5 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
 </style>
