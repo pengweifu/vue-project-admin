@@ -32,6 +32,22 @@ export default {
       },
       path: '/viewTemplate/viewManyForm',
       component: lazyLoading('viewTemplate/ViewManyForm')
+    },
+    {
+      name: 'ViewTreeList',
+      meta: {
+        label: '树形列表'
+      },
+      path: '/viewTemplate/viewTreeList',
+      component: lazyLoading('viewTemplate/ViewTreeList')
+    },
+    {
+      name: 'ViewLeftTreeRightList',
+      meta: {
+        label: '左树由表'
+      },
+      path: '/viewTemplate/viewLeftTreeRightList',
+      component: lazyLoading('viewTemplate/ViewLeftTreeRightList')
     }
   ]
 }

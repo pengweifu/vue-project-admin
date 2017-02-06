@@ -6,6 +6,9 @@
         <th v-for="(column,index) in columns">
           {{column.text}}
         </th>
+        <th>
+          操作
+        </th>
       </tr>
       </thead>
       <tbody>
@@ -16,10 +19,17 @@
             :record="record"
             :index="trIndex"
             v-on:toggle="toggle"
-            v-on:row-show="rowShow">
+            v-on:row-show="rowShow"
+            :requestUrl="requestUrl">
         </tr>
       </tbody>
     </table>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total">
+    </el-pagination>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -44,6 +54,15 @@
         default: function () {
           return []
         }
+      },
+      requestUrl: {
+        type: String
+      },
+      total: {
+        type: Number,
+        default: function () {
+          return 0
+        }
       }
     },
     computed: {},
@@ -56,6 +75,12 @@
       rowShow: function (trIndex, show) {
         let me = this
         Vue.set(me.dataSource[trIndex], '_show', show)
+      },
+      handleSizeChange (val) {
+        this.$emit('handle-size-change')
+      },
+      handleCurrentChange (val) {
+        this.$emit('handle-current-change')
       }
     },
     components: {

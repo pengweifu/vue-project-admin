@@ -10,6 +10,7 @@ import { TOGGLE_SIDEBAR } from 'vuex-store/mutation-types'
 import VueDragula from 'vue-dragula'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import 'assets/style/index.scss'
 
 Vue.use(Resource)
 Vue.use(NProgress)

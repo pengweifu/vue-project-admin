@@ -11,7 +11,8 @@
               <tree-input
                 :model="formData.treeInput"
                 :treeNodes="regions"
-                :props="props">
+                :props="props"
+                @model-change="modelChange">
               </tree-input>
             </el-form-item>
             <el-form-item label="选择时间">
@@ -54,7 +55,7 @@
             <el-form-item label="多行文本">
               <el-input type="textarea" v-model="formData.desc"></el-input>
             </el-form-item>
-            <el-form-item label="多行文本">
+            <el-form-item label="上传文件">
               <el-upload
                 action="//jsonplaceholder.typicode.com/posts/"
                 :on-preview="handlePreview"
@@ -72,46 +73,67 @@
       </el-col>
     </el-row>
 
-    <el-row>
-      <el-col :span="24">
-        <el-table
-          :data="tableData"
-          border
-          style="width: 100%">
-          <el-table-column
-            label="日期"
-            width="180">
-            <template scope="scope">
-              <el-icon name="time"></el-icon>
-              <span style="margin-left: 10px">{{ scope.row.date }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column
-            label="姓名"
-            width="180">
-            <template scope="scope">
-              <el-popover trigger="hover" placement="top">
-                <p>姓名: {{ scope.row.name }}</p>
-                <p>住址: {{ scope.row.address }}</p>
-                <div slot="reference" class="name-wrapper">
-                  <el-tag>{{ scope.row.name }}</el-tag>
-                </div>
-              </el-popover>
-            </template>
-          </el-table-column>
-          <el-table-column label="操作">
-            <template scope="scope">
-              <el-button
-                size="small"
-                @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-              <el-button
-                size="small"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-col>
+    <el-row class="box">
+      <el-row>
+        <el-col :span="2">
+          <div>
+            <router-link :to="{ name: 'ViewForm' }" tag="button" class="el-button el-button--primary">
+              <i class="el-icon-plus"></i><span>新增</span>
+            </router-link>
+          </div>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="24">
+          <el-table
+            :data="tableData"
+            border
+            style="width: 100%">
+            <el-table-column
+              label="日期"
+              width="180">
+              <template scope="scope">
+                <el-icon name="time"></el-icon>
+                <span style="margin-left: 10px">{{ scope.row.date }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column
+              label="姓名"
+              width="180">
+              <template scope="scope">
+                <el-popover trigger="hover" placement="top">
+                  <p>姓名: {{ scope.row.name }}</p>
+                  <p>住址: {{ scope.row.address }}</p>
+                  <div slot="reference" class="name-wrapper">
+                    <el-tag>{{ scope.row.name }}</el-tag>
+                  </div>
+                </el-popover>
+              </template>
+            </el-table-column>
+            <el-table-column label="操作">
+              <template scope="scope">
+                <el-button
+                  size="small"
+                  @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                <el-button
+                  size="small"
+                  type="danger"
+                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="24">
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="total">
+          </el-pagination>
+        </el-col>
+      </el-row>
     </el-row>
   </div>
 </template>
@@ -119,6 +141,9 @@
 <script type="text/ecmascript-6">
   import treeInput from '../../components/treeInput.vue'
   export default {
+    components: {
+      treeInput
+    },
     data () {
       return {
         formData: {
@@ -196,16 +221,17 @@
           date: '2016-05-03',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1516 弄'
-        }]
+        }],
+        total: 4
       }
     },
     methods: {
       onSubmit () {
-        console.log(this.formData.treeInput.id)
+        console.log(this.formData)
         console.log('submit!')
       },
-      clickTree () {
-        console.log('aaa')
+      modelChange (val) {
+        this.formData.treeInput = val
       },
       handleRemove (file, fileList) {
         console.log(file, fileList)
@@ -218,10 +244,13 @@
       },
       handleDelete (index, row) {
         console.log(index, row)
+      },
+      handleSizeChange (val) {
+        console.log(`每页 ${val} 条`)
+      },
+      handleCurrentChange (val) {
+        console.log(`每页 ${val} 条`)
       }
-    },
-    components: {
-      treeInput
     }
   }
 </script>

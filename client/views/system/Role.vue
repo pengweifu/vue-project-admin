@@ -2,7 +2,7 @@
   <div class="box">
     <el-row>
       <el-col :span="2">
-        <div class="grid-content bg-purple">
+        <div>
           <router-link :to="{name: 'RoleAdd'}" tag="button" class="el-button el-button--primary">
             <i class="el-icon-plus"></i><span>新增</span>
           </router-link>
@@ -51,6 +51,14 @@
         </el-table-column>
       </el-table>
     </el-row>
+    <el-row>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total">
+      </el-pagination>
+    </el-row>
 
   </div>
 </template>
@@ -87,7 +95,8 @@
             name: '集团总公司'
           },
           dataScope: '所在公司以及以下数据'
-        }]
+        }],
+        total: 43
       }
     },
     methods: {
@@ -96,19 +105,17 @@
       },
       handleDelete (index, row) {
         console.log(index, row)
+      },
+      handleSizeChange (val) {
+        console.log(`每页 ${val} 条`)
+      },
+      handleCurrentChange (val) {
+        console.log(`每页 ${val} 条`)
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  .el-row {
-    margin-bottom: 20px;
 
-  &
-  :last-child {
-    margin-bottom: 0;
-  }
-
-  }
 </style>

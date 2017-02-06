@@ -1,4 +1,4 @@
-/build<template>
+<template>
   <div id="app">
     <nprogress-container></nprogress-container>
     <navbar :show="true"></navbar>

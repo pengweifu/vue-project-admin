@@ -3,6 +3,7 @@
     <grid-body :columns="columns"
                :tree-structure="treeStructure"
                :data-source="data"
+               :requestUrl="requestUrl"
                />
   </div>
 </template>
@@ -29,12 +30,13 @@
         default: function () {
           return []
         }
+      },
+      requestUrl: {
+        type: String
       }
     },
     data () {
-      return {
-        gridPanelWidth: 0
-      }
+      return {}
     },
     computed: {
       data: function () {

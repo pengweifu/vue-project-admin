@@ -17,7 +17,7 @@
         </el-tree>
       </span>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogShow = false">确 定</el-button>
+        <el-button type="primary" @click="handleComfirm">确 定</el-button>
         <el-button type="danger" @click="resetTreeData">清 除</el-button>
         <el-button @click="dialogShow = false">取 消</el-button>
       </span>
@@ -58,7 +58,8 @@
     },
     data () {
       return {
-        dialogShow: false
+        dialogShow: false,
+        myModel: {}
       }
     },
     methods: {
@@ -66,11 +67,17 @@
         this.dialogShow = true
       },
       handleCheckChange (data, node) {
-        this.model = data
+        this.myModel = data
+      },
+      handleComfirm () {
+        this.dialogShow = !this.dialogShow
+        console.log(this.myModel)
+        this.$emit('model-change', this.myModel)
       },
       resetTreeData () {
-        this.dialogShow = false
-        this.model = {}
+        this.dialogShow = !this.dialogShow
+        this.myModel = {}
+        this.$emit('model-change', this.myModel)
       }
     }
   }

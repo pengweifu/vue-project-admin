@@ -2,7 +2,7 @@
   <div class="box">
     <el-row :gutter="20">
       <el-col :span="2">
-        <div class="grid-content bg-purple">
+        <div>
           <el-button type="primary" icon="plus" @click="dialogFormVisible = true">
             新增
           </el-button>
@@ -249,16 +249,6 @@
 <style>
   .el-input-number__decrease, .el-input-number__increase {
     top: 3px !important;
-  }
-
-  .el-row {
-    margin-bottom: 20px;
-
-  &
-  :last-child {
-    margin-bottom: 0;
-  }
-
   }
   /*.el-col {*/
   /*border-radius: 4px;*/
